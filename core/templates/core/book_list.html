@@ -35,9 +35,35 @@
       </div>
     </nav>
 
+<form class="row g-3">
+  <div class="col-auto">
+    <input type="text" class="form-control" placeholder="Название книги" name="name" value="{{ request.GET.name }}">
+  </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 
-{{ info }}
-
+    <table class="table", bgcolor="#a9a9a9">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Название</th>
+          <th scope="col">Количество страниц</th>
+          <th scope="col">Автор</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for book in  object_list%}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{% url 'core:book_detail' book.pk %}">{{ book.name }}</a></td>
+          <td>{{ book.pages|default:" - " }}</td>
+          <td>{{ book.author.name|default:" - " }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"> </script>
   </body>
