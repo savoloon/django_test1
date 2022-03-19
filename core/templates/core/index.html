@@ -35,12 +35,13 @@
       </div>
     </nav>
 
-    <table class="table">
+    <table class="table", bgcolor="#a9a9a9">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Название</th>
           <th scope="col">Количество страниц</th>
+          <th scope="col">Автор</th>
         </tr>
       </thead>
       <tbody>
@@ -49,6 +50,7 @@
           <th scope="row">{{ forloop.counter }}</th>
           <td>{{ book.name }}</td>
           <td>{{ book.pages|default:" - " }}</td>
+          <td>{{ book.author.name|default:" - " }}</td>
         </tr>
       {% endfor %}
       </tbody>
