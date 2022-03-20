@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 import core.models
 
 class TitleMixin:
-    title = None
+    title: str = None
 
     def get_title(self):
         return self.title
@@ -40,7 +40,10 @@ class Books(TitleMixin, ListView):
 
 
 class BookDetail(TitleMixin, DetailView):
-    title = 'Информация о книге'
     queryset = core.models.Book.objects.all()
+
+    def get_title(self):
+        return str(self.get_object())
+
 
 
