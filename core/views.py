@@ -1,6 +1,7 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView, DetailView
+from django.urls import reverse
+from django.views.generic import TemplateView, ListView, DetailView, UpdateView, CreateView, DeleteView
 
 import core.models
 import core.forms
@@ -46,8 +47,8 @@ class Books(TitleMixin, ListView):
 
     def get_context_data(self):
         context = super().get_context_data()
-        # context['filters'] = core.forms.BookSearch(self.request.GET or None)
-        context['filters'] = self.get_filters()
+        context['form'] = core.forms.BookSearch(self.request.GET or None)
+        # context['filters'] = self.get_filters()
         return context
 
 
@@ -57,6 +58,32 @@ class BookDetail(TitleMixin, DetailView):
 
     def get_title(self):
         return str(self.get_object())
+
+class BookUpdate(TitleMixin,UpdateView):
+    model = core.models.Book
+    form_class = core.forms.BookEdit
+    def get_title(self):
+        return f'Изменение данных о книге"{str(self.get_object())}"'
+    def get_success_url(self):
+        return reverse('core:book_list')
+
+class BookCreate(TitleMixin,CreateView):
+    model = core.models.Book
+
+    form_class = core.forms.BookEdit
+    title = 'Добавление книги'
+
+    def get_success_url(self):
+        return reverse('core:book_list')
+
+class BookDelete(TitleMixin,DeleteView):
+    model = core.models.Book
+
+    def get_title(self):
+        return f'Удаление книги{str(self.get_object())}'
+    def get_success_url(self):
+        return reverse('core:book_list')
+
 
 
 
