@@ -1,2 +1,7 @@
-venv
 db.sqlite3
+venv
+.idea
+/.coverage
+/htmlcov/
+/package-lock.json
+/node_modules/

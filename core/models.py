@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Author(models.Model):
-    name = models.CharField("Имя автора", max_length= 128)
+    name = models.CharField('Имя', max_length=128)
 
     def __str__(self):
         return self.name
@@ -13,12 +13,10 @@ class Book(models.Model):
     name = models.CharField('Название', max_length=128)
     pages = models.IntegerField('Количество страниц', blank=True, null=True)
 
-
     class Meta:
         ordering = ['pages']
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
-
 
     def __str__(self):
         return self.name
