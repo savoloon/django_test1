@@ -1,0 +1,23 @@
+{
+  "name": "bootstrap",
+  "version": "5.1.3",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savoloon/django_test1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savoloon/django_test1/issues"
+  },
+  "homepage": "https://github.com/savoloon/django_test1#readme"
+}
