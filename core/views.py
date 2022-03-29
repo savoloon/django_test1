@@ -29,6 +29,14 @@ class IndexView(TitleMixin, TemplateView):
     def get_info(self):
         return 'Главная страница'
 
+class Head(TitleMixin, TemplateView):
+    template_name = 'core/head.html'
+    title = 'Главная страница'
+
+class Info(TitleMixin, TemplateView):
+    template_name = 'core/info.html'
+    title = 'Информация'
+
 
 class Books(TitleMixin, ListView):
     title = 'Книги'

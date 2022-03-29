@@ -12,28 +12,29 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">Книжный</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                   <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="{% url 'core:index' %}">Home</a>
+                      <a class="nav-link active" aria-current="page" href="{% url 'core:head' %}">Главная</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="admin/">Admin</a>
+                      <a class="nav-link" href="admin/">Администрирование</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="{% url 'core:book_list' %}">Books</a>
+                      <a class="nav-link" href="{% url 'core:book_list' %}">Книги</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link disabled">Disabled</a>
+                      <a class="nav-link" href="{% url 'core:info' %}">Информация</a>
                   </li>
               </ul>
           </div>
       </div>
   </nav>
+
 
 {% block title %}
     {% if title %}
@@ -43,7 +44,6 @@
 
 {% block content %}
 {% endblock %}
-
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"> </script>
   </body>
