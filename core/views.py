@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.template import Template, Context
 
 import core.models
 import core.forms
@@ -15,6 +16,7 @@ class TitleMixin:
         context = super().get_context_data()
         context['title'] = self.get_title()
         return context
+
 
 
 class IndexView(TitleMixin, TemplateView):
@@ -33,6 +35,7 @@ class Head(TitleMixin, TemplateView):
     template_name = 'core/head.html'
     title = 'Главная страница'
 
+
 class Info(TitleMixin, TemplateView):
     template_name = 'core/info.html'
     title = 'Информация'
@@ -45,16 +48,13 @@ class Books(TitleMixin, ListView):
         return core.filters.BookFilter(self.request.GET)
 
     def get_queryset(self):
-        # name = self.request.GET.get('name')
-        # queryset = core.models.Book.objects.all()
-        # if name:
-        #     queryset = queryset.filter(name__icontains=name)
+
         return self.get_filters().qs
 
     def get_context_data(self):
         context = super().get_context_data()
         context['form'] = core.forms.BookSearch(self.request.GET or None)
-        # context['filters'] = self.get_filters()
+
         return context
 
 
