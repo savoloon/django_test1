@@ -10,23 +10,23 @@
         state: "latest"
         update_cache: true
 
-    -name: Install pip packages
+    - name: Install pip packages
       pip:
         name: [ 'docker-py' ]
 
-    -name: Pull docker image
-      shell: docker pull limenomen/test_project
+    - name: Pull docker image
+      shell: docker pull savoloon/django_test3
 
-    -name: Remove old container
+    - name: Remove old container
       docker_container:
         name: django_test3
         image: savoloon/django_test3
         state: absent
 
     - name: Create directories
-        file: path={{ item }} state=directory mode=0700
-        with_items:
-          - "/var/docker/django_test4/data"
+      file: path={{ item }} state=directory mode=0700
+      with_items:
+        - "/var/docker/django_test4/data"
 
     - name: Create www directories
       file: path={{ item }} state=directory owner=www-data
@@ -49,30 +49,30 @@
 
     - name: Start container
       docker_container:
-        name: test-project
-          image: savoloon/django_test3
-          restart_policy: always
-          state: started
-          links:
-            - "test-project-db:db"
-          ports:
-            - 127.0.0.1:8854:80
-          volumes:
-            - "/var/www/django_test4/static:/static"
-          env:
-            POSTGRESQL_PASS: "{{ POSTGRES_PASSWORD }}"
+        name: django-test4
+        image: savoloon/django_test3
+        restart_policy: always
+        state: started
+        links:
+          - "django-test4-db:db"
+        ports:
+          - 127.0.0.1:8854:80
+        volumes:
+          - "/var/www/django_test4/static:/static"
+        env:
+          POSTGRESQL_PASS: "{{ POSTGRES_PASSWORD }}"
 
     - name: Install npm
-      shell: docker exec -i test-project bash -c "npm install"
+      shell: docker exec -i django-test4 bash -c "npm install"
 
     - name: Collect static
-      shell: docker exec -i test-project bash -c "python3 ./manage.py collectstatic --noinput"
+      shell: docker exec -i django-test4 bash -c "python3 ./manage.py collectstatic --noinput"
 
     - name: Copy npm packegs
-      shell: docker exec -i test-project bash -c "rm -rf static/node_modules; mv node_modules static/"
+      shell: docker exec -i django-test4 bash -c "rm -rf static/node_modules; mv node_modules static/"
 
     - name: Restart container
-      shell: docker restart test-project
+      shell: docker restart django-test4
 
     - name: Set web static permissions
       file:
@@ -81,11 +81,11 @@
         owner: www-data
         recurse: yes
 
-    - name: Wait test-project start
+    - name: Wait django-test4 start
       shell: sleep 2
 
     - name: Migrate db
-      shell: docker exec -i test-project bash -c "python3 ./manage.py migrate"
+      shell: docker exec -i django-test4 bash -c "python3 ./manage.py migrate"
 
     - name: Create nginx config
       template: src=nginx.jinja2 dest=/etc/nginx/sites-enabled/default

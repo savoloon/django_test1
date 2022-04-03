@@ -87,6 +87,7 @@ class BookDelete(TitleMixin,DeleteView):
 
     def get_title(self):
         return f'Удаление книги{str(self.get_object())}'
+
     def get_success_url(self):
         return reverse('core:book_list')
 
