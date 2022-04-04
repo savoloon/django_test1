@@ -1,10 +1,10 @@
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView, UpdateView, CreateView, DeleteView
-from django.template import Template, Context
 
 import core.models
 import core.forms
 import core.filters
+
 
 class TitleMixin:
     title: str = None
@@ -18,8 +18,7 @@ class TitleMixin:
         return context
 
 
-
-class IndexView(TitleMixin, TemplateView):
+class Bin(TitleMixin, TemplateView):
     template_name = 'core/bin.html'
     title = 'Главная'
 
@@ -30,6 +29,7 @@ class IndexView(TitleMixin, TemplateView):
 
     def get_info(self):
         return 'Главная страница'
+
 
 class Index(TitleMixin, TemplateView):
     template_name = 'core/index.html'
@@ -58,22 +58,25 @@ class Books(TitleMixin, ListView):
         return context
 
 
-
 class BookDetail(TitleMixin, DetailView):
     queryset = core.models.Book.objects.all()
 
     def get_title(self):
         return str(self.get_object())
 
-class BookUpdate(TitleMixin,UpdateView):
+
+class BookUpdate(TitleMixin, UpdateView):
     model = core.models.Book
     form_class = core.forms.BookEdit
+
     def get_title(self):
         return f'Изменение данных о книге"{str(self.get_object())}"'
+
     def get_success_url(self):
         return reverse('core:book_list')
 
-class BookCreate(TitleMixin,CreateView):
+
+class BookCreate(TitleMixin, CreateView):
     model = core.models.Book
 
     form_class = core.forms.BookEdit
@@ -82,7 +85,8 @@ class BookCreate(TitleMixin,CreateView):
     def get_success_url(self):
         return reverse('core:book_list')
 
-class BookDelete(TitleMixin,DeleteView):
+
+class BookDelete(TitleMixin, DeleteView):
     model = core.models.Book
 
     def get_title(self):
@@ -90,7 +94,3 @@ class BookDelete(TitleMixin,DeleteView):
 
     def get_success_url(self):
         return reverse('core:book_list')
-
-
-
-

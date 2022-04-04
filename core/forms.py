@@ -9,7 +9,6 @@ class BookSearch(forms.Form):
     author = forms.ModelChoiceField(label='Автор книги', queryset=core.models.Author.objects.all(), required=False)
 
 
-
 class BookEdit(forms.ModelForm):
     class Meta:
         model = core.models.Book
