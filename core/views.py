@@ -20,7 +20,7 @@ class TitleMixin:
 
 
 class IndexView(TitleMixin, TemplateView):
-    template_name = 'core/index.html'
+    template_name = 'core/bin.html'
     title = 'Главная'
 
     def get_context_data(self, **kwargs):
@@ -31,8 +31,8 @@ class IndexView(TitleMixin, TemplateView):
     def get_info(self):
         return 'Главная страница'
 
-class Head(TitleMixin, TemplateView):
-    template_name = 'core/head.html'
+class Index(TitleMixin, TemplateView):
+    template_name = 'core/index.html'
     title = 'Главная страница'
 
 
