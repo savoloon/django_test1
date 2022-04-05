@@ -4,31 +4,66 @@
 
 {% block content %}
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators" style="padding-right: 650px">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'core/img/imgbook1.jpg' %}" class="d-block w-50" alt="если вы не видите">
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'core/img/imgbook2.jpg' %}" class="d-block w-50" alt="мне вас жаль,обратитесь в тех.поддержку">
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'core/img/imgbook3.jpg' %}" class="d-block w-50" alt="прекрасные книги">
+    <center><h4>Это лучшие книги по мнению нашей команды</h4></center>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static 'core/img/book1.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Liz❤️‍🔥chka</h5>
+                    <p class="card-text">Данная книг о том, как жизнерадостная девушка встретила клоуна. Жанр: хоррор.</p>
+                </div>
             </div>
         </div>
-        <button class="carousel-control-prev" style = "padding-right: 90px" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" style="padding-right: 81px; margin-right: 560px" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static 'core/img/book2.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Maxim</h5>
+                    <p class="card-text">Он был обычным работником "Магнита", пока в его жизни... Жанр: эротика</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static 'core/img/book3.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">German</h5>
+                    <p class="card-text">Он думал, что жизнь это трагедия, а оказалось романтика. Жанр: романтика.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center><h4>Это лучшие авторы по мнению нашей команды</h4></center>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static 'core/img/author1.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Deniska</h5>
+                    <p class="card-text">Автор Deniska автор мировых хитов с большим именем в мировой индустрии.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static 'core/img/author2.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Vladik</h5>
+                    <p class="card-text">Биография этого автора загадочна и туманна, как и его детективы.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static 'core/img/author3.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pushkin</h5>
+                    <p class="card-text">Умер в перестрелке.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

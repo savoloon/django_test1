@@ -36,6 +36,11 @@ class Index(TitleMixin, TemplateView):
     title = 'Главная страница'
 
 
+class Price(TitleMixin, TemplateView):
+    template_name = 'core/price.html'
+    title = 'Информация'
+
+
 class Info(TitleMixin, TemplateView):
     template_name = 'core/info.html'
     title = 'Информация'
