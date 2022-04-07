@@ -38,7 +38,7 @@ class Index(TitleMixin, TemplateView):
 
 class Price(TitleMixin, TemplateView):
     template_name = 'core/price.html'
-    title = 'Информация'
+    title = 'Прайс'
 
 
 class Info(TitleMixin, TemplateView):
@@ -53,13 +53,11 @@ class Books(TitleMixin, ListView):
         return core.filters.BookFilter(self.request.GET)
 
     def get_queryset(self):
-
         return self.get_filters().qs
 
     def get_context_data(self):
         context = super().get_context_data()
         context['form'] = core.forms.BookSearch(self.request.GET or None)
-
         return context
 
 

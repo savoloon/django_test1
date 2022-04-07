@@ -1,9 +1,5 @@
 {% extends 'core/bin.html' %}
 {% block content %}
-    <div class="alert alert-primary"role="alert">
-    Количество страниц:
-    <td>{{ book.pages|default:'Неизвестно' }}</td>
-    </div>
     <div class="alert alert-primary" role="alert">
     Автор книги:
     <td>{{ book.author.name|default:'Неизвестно' }}</td>

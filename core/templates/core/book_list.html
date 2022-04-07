@@ -10,6 +10,7 @@
             <th scope="col">Название</th>
             <th scope="col">Количество страниц</th>
             <th scope="col">Имя автора</th>
+            <th scope="col">Жанр</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
                 <td><a href="{% url 'core:book_detail' book.pk %}">{{ book.name|capfirst }}</a></td>
                 <td>{{ book.pages|default:" - " }}</td>
                 <td>{{ book.author.name|default:" - " }}</td>
+                <td>{{ book.genre.name|default:" - " }}</td>
             </tr>
         {% empty %}
             <h4>Не найдено</h4>

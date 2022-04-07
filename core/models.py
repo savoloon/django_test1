@@ -8,10 +8,18 @@ class Author(models.Model):
         return self.name
 
 
+class Genre(models.Model):
+    name = models.CharField('Название жанра', max_length=64)
+
+    def __str__(self):
+        return self.name
+
+
 class Book(models.Model):
     author = models.ForeignKey('core.Author', on_delete=models.CASCADE, null=True, blank=True, related_name='books')
     name = models.CharField('Название', max_length=128)
     pages = models.IntegerField('Количество страниц', blank=True, null=True)
+    genre = models.ForeignKey('core.Genre', on_delete=models.CASCADE, null=True, blank=True, related_name='books')
 
     class Meta:
         ordering = ['pages']
